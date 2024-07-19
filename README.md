@@ -27,18 +27,32 @@ This project demonstrates how to connect and read data from multiple BNO055 IMUs
 
 ## 🔑 Key Points
 
-1. **Deactivate the Current Channel:** Before communicating with the next multiplexer, ensure you deactivate the channel on the current multiplexer. This can be done with the following code:
+1. **Deactivate the Current Multiplexer:** Before communicating with the next multiplexer, ensure you deactivate the channel on the current multiplexer. This can be done with the following code:
    
    ```cpp
-   // TCA_addrs = [0x70, 0x71, 0x72...]
-   
-   for (uint8_t addr : TCA_addrs) {
-     Wire.beginTransmission(addr);
+   void tcaselect(uint8_t channel) {
+
+     // deactivate the second multiplexer
+     Wire.beginTransmission(0x71);
      Wire.write(0);
+     Wire.endTransmission();
+
+     // activate the channel on the first multiplexer
+     Wire.beginTransmission(0x70);
+     Wire.write(1 << channel);
      Wire.endTransmission();
    }
 
 2. **Switch to a Dummy Channel**: After communicating with an active channel, switch to a dummy channel to ensure that no unintended data is transmitted or received. This prevents potential conflicts and helps in managing multiple sensors and multiplexers efficiently.
+
+   ```cpp
+   // select the channel on the multiplexer
+   tcaselect(channel);
+   
+   (read sensor data here)
+   
+   // deselect the channel by selecting dummy channel
+   tcaselect(dummy_channel);
 
 ## ❓ How to Use This Repository
 
@@ -46,9 +60,9 @@ This repository is organized chronologically to reflect the development process.
 
 - **For Beginners**: Start with the folder `1_one_TCA_one_BNO`. This example demonstrates the setup with a single TCA9548A multiplexer and one BNO055 sensor, providing a foundational understanding of wiring and code configuration.
 
-- **For Intermediate Users**: Move to the folders `2_two_TCA_two_BNO` and `3_three_TCA_three_BNO` if you're comfortable with the basics and wish to explore more complex setups. Note that these examples include similar code blocks to enhance readability and help you grasp the concept.
+- **For Intermediate Users**: Move to the folders `2_two_TCA_two_BNO` if you're comfortable with the basics and wish to explore more complex setups. Note that these examples include similar code blocks to enhance readability and help you grasp the concept.
 
-- **For Advanced Users**: Explore the folder `4_generalised` for a refined code example that can be applied to as many multiplexers as needed, assuming they have different addresses. This folder provides a more generalized and scalable approach to handling multiple multiplexers.
+- **For Advanced Users**: Explore the folder `3_generalised` for a refined code example that can be applied to as many multiplexers as needed, assuming they have different addresses. This folder provides a more generalized and scalable approach to handling multiple multiplexers.
 
 ## 🛠️ Hardware Requirements
 

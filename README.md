@@ -1,4 +1,4 @@
-# Multiplexer-BNO055-IMU-Interface
+# Multiple-Multiplexer-BNO055-IMU-Interface
 
 This repository contains code for interfacing multiple BNO055 IMUs using multiple I2C multiplexers (TCA9548A) with an Arduino. The code initializes and reads data from multiple BNO055 sensors connected via the multiplexers and outputs the data through the serial port.
 

@@ -23,7 +23,14 @@ During my development process, I encountered several issues related to clock str
 
 ## 🚀 Introduction
 
-This project demonstrates how to connect and read data from multiple BNO055 IMUs using multiple I2C multiplexers. The BNO055 is an advanced 9-axis orientation sensor, but it only supports two different I2C addresses. When more than two BNO055 sensors are needed, the TCA9548A multiplexer is required. This multiplexer allows you to communicate upto 8 I2C devices that have the same address.
+This project demonstrates how to connect and read data from multiple BNO055 IMUs using multiple I2C multiplexers. The BNO055 is an advanced 9-axis orientation sensor, but it only supports two different I2C addresses. When more than two BNO055 sensors are needed, the TCA9548A multiplexer is required. This multiplexer allows you to communicate upto 8 I2C devices that have the same address and the address of the multiplexer itself is also configurable by adjusting the values of the A0, A1 and A2 pins.
+
+<div align="center">
+<img src="2_two_TCA_two_BNO/two_TCA_two_BNO.jpg" width="800">
+</div>
+
+For those requiring a more compact solution, this project also offers a custom PCB design that integrates both the multiplexer chip and BNO055 into a single board. Detailed information, including Gerber files, BOM, and pick-and-place files, can be found in the PCB_TCA9548A_BNO055 folder.
+
 
 ## 🔑 Key Points
 

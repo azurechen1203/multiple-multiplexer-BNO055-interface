@@ -31,6 +31,10 @@ This project demonstrates how to connect and read data from multiple BNO055 IMUs
 
 For those requiring a more compact solution, this project also offers a custom PCB design that integrates both the multiplexer chip and BNO055 into a single board. Detailed information, including Gerber files, BOM, and pick-and-place files, can be found in the PCB_TCA9548A_BNO055 folder.
 
+<div align="center">
+<img src="PCB_TCA9548A_BNO055/images/usage.jpg" width="800">
+</div>
+
 
 ## 🔑 Key Points
 
